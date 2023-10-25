@@ -1,0 +1,16 @@
+machine.freq(freq_val): When “freq_val” is not specified, it is to return to the current CPU frequency; Otherwise, it is to set the current CPU frequency.
+freq_val: 125000000Hz(125MHz).
+machine.reset(): A reset function. When it is called, the program will be reset.
+machine.unique_id(): Obtains MAC address of the device.
+machine.idle(): Turns off any temporarily unused functions on the chip and its clock, which is useful to reduce power consumption at any time during short or long periods.
+machine.disable_irq(): Disables interrupt requests and return the previous IRQ state. The disable_irq () function and enable_irq () function need to be used together;
+Otherwise, the machine will crash and restart.
+machine.enable_irq(state): To re-enable interrupt requests. The parameter state should be the value that was returned from the most recent call to the disable_irq()
+function.
+machine.time_pulse_us(pin, pulse_level, timeout_us=1000000):
+Tests the duration of the external pulse level on the given pin and returns the duration of the external pulse level in microseconds. When pulse level = 1, it tests the highlevel duration; When pulse level = 0, it tests the low-level duration.
+If the setting level is not consistent with the current pulse level, it will wait until they are consistent, and then start timing. If the set level is consistent with the current
+pulse level, it will start timing immediately.
+When the pin level is opposite to the set level, it will wait for timeout and return “-2”.
+When the pin level and the set level is the same, it will also wait timeout but return “-1”.
+timeout_us is the duration of timeout.
